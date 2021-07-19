@@ -1,11 +1,13 @@
 function changeCategory() {
-    let eID = document.getElementById("category");
+    let eID = document.getElementById("inlineFormCustomSelect category");
     let category = eID.options[eID.selectedIndex].value;
     console.log(category)
+    location.href = "/" + category
 }
 
 function changeSupplier() {
-    let eID = document.getElementById("supplier");
-    let supplier = eID.options.value;
+    let eID = document.getElementById("inlineFormCustomSelect supplier");
+    let supplier = eID.options[eID.selectedIndex].value;
     console.log(supplier)
+    location.href = "/"
 }

@@ -26,7 +26,7 @@
     <!-- End of Bootstrap components -->
 
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
-    <scrip src="src/main/webapp/static/js/script.js" defer></scrip>
+    <script src="/static/js/script.js" defer></script>
 </head>
 
 <body>
@@ -43,7 +43,7 @@
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
-            <li><a href="/alma" class="nav-link px-2 link-dark">Features</a></li>
+            <li><a href="/phone" class="nav-link px-2 link-dark">Features</a></li>
             <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
             <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
             <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
@@ -59,14 +59,16 @@
 
 <div class="container">
     <div class="card">
-        <select name="category" id="category" onchange="changeCategory()">
-            <option value="tablet">Tablet</option>
+        <select name="category" class="custom-select mr-sm-2" id="inlineFormCustomSelect category" onchange="changeCategory()">
+            <option selected>Select category!</option>
             <option value="phone">Phone</option>
+            <option value="tablet">Tablet</option>
         </select>
     </div>
 
     <div class="card">
-        <select name="supplier" id="supplier" onchange="changeSupplier()">
+        <select name="supplier" class="custom-select mr-sm-2" id="inlineFormCustomSelect supplier" onchange="changeSupplier()">
+            <option selected>Select supplier!</option>
             <option value="amazon">Amazon</option>
             <option value="lenovo">Lenovo</option>
         </select>
