@@ -25,6 +25,16 @@
     background: #428bca;
 }
 
+.card {
+    margin-bottom: 15px;
+    transition: transform .2s;
+}
+
+.card:hover
+{
+    transform: scale(1.05);
+}
+
 .item.list-group-item .list-group-image
 {
     margin-right: 10px;
@@ -55,8 +65,4 @@
 .item.list-group-item:after
 {
     clear: both;
-}
-.list-group-item-text
-{
-    margin: 0 0 11px;
 }
