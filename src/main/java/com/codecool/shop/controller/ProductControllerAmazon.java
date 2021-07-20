@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/amazon"})
+@WebServlet(urlPatterns = {"/cart"})
 public class ProductControllerAmazon extends HttpServlet {
 
     @Override
@@ -37,7 +37,7 @@ public class ProductControllerAmazon extends HttpServlet {
         // params.put("category", productCategoryDataStore.find(1));
         // params.put("products", productDataStore.getBy(productCategoryDataStore.find(1)));
         // context.setVariables(params);
-        engine.process("product/products.html", context, resp.getWriter());
+        engine.process("product/cart.html", context, resp.getWriter());
     }
 
 }

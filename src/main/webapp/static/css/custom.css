@@ -66,3 +66,20 @@
 {
     clear: both;
 }
+.summary
+{ text-align: center }
+
+.counter .count {
+    color: #000;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+;min-width: 35px;
+    text-align: center;
+}
+
+div {
+    text-align: center;
+}
