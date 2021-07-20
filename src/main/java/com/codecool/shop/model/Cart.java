@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Cart {
 
-    List<Product> cart;
+    private List<Product> cart;
 
     public Cart() {
         this.cart = new ArrayList<>();
@@ -39,6 +39,16 @@ public class Cart {
         else {
             throw new ArrayIndexOutOfBoundsException("The cart is empty!");
         }
+    }
+
+    public float sumPrice() {
+        float totalPrize = 0;
+        if (!isEmpty()) {
+            for (Product product:cart) {
+                totalPrize += product.getDefaultPrice();
+            }
+        }
+        return totalPrize;
     }
 
     public void resetCart() {
