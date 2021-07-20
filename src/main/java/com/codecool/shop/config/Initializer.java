@@ -40,5 +40,6 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("Lenovo IdeaPad Miix 700", 479, "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo));
         productDataStore.add(new Product("Amazon Fire HD 8", 89, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
         productDataStore.add(new Product("Amazon Ice HD 6", 99, "USD", "Amazon's latest Ice HD 6 phone is a great value for media consumption.", phone, amazon));
+        productDataStore.add(new Product("Lenovo Legion 2 Pro", 878, "USD", "Lenovo Legion introduces the next evolution of mobile gaming.", phone, lenovo));
     }
 }

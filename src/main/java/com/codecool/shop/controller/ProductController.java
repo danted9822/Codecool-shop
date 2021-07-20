@@ -41,7 +41,6 @@ public class ProductController extends HttpServlet {
         Map<String, Object> params = new HashMap<>();
 
         if (category == null && supplier == null) {
-
             params.put("category", null);
             params.put("products", productDataStore.getAll());
         } else if (supplier == null){
