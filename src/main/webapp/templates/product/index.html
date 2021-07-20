@@ -61,20 +61,24 @@
     <div class="card">
         <select name="category" class="custom-select mr-sm-2" id="inlineFormCustomSelect category" onchange="changeCategory()">
             <option selected>Select category!</option>
-            <option value="phone">Phone</option>
-            <option value="tablet">Tablet</option>
+            <option value="1">Tablet</option>
+            <option value="2">Phone</option>
         </select>
     </div>
 
     <div class="card">
         <select name="supplier" class="custom-select mr-sm-2" id="inlineFormCustomSelect supplier" onchange="changeSupplier()">
             <option selected>Select supplier!</option>
-            <option value="amazon">Amazon</option>
-            <option value="lenovo">Lenovo</option>
+            <option value="1">Amazon</option>
+            <option value="2">Lenovo</option>
         </select>
     </div>
 
-    <div class="card">
+    <div class="card" th:if="${category}">
+        <strong th:text="${category.name}">Category Title</strong>
+    </div>
+
+    <div class="card" th:unless="${category}">
         <strong>Products</strong>
     </div>
 
