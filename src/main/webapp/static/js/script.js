@@ -9,5 +9,5 @@ function changeSupplier() {
     let eID = document.getElementById("inlineFormCustomSelect supplier");
     let supplier = eID.options[eID.selectedIndex].value;
     console.log(supplier)
-    location.href = "/"
+    location.href = "/" + supplier
 }
