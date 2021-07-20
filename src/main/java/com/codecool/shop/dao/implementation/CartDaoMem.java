@@ -25,11 +25,11 @@ public class CartDaoMem implements CartDao {
     }
 
     public void addProductToCart(int id) {
-        data.addToCart(ProductDaoMem.getInstance().getAll().stream().filter(t -> t.getId() == id).findFirst().orElse(null));
+        data.addToCart(ProductDaoMem.getInstance().find(id));
     }
 
     public void removeProductFromCart(int id) throws AttributeNotFoundException {
-        data.removeFromCart(ProductDaoMem.getInstance().getAll().stream().filter(t -> t.getId() == id).findFirst().orElse(null));
+        data.removeFromCart(ProductDaoMem.getInstance().find(id));
     }
 
     public Product getProduct(int id) {

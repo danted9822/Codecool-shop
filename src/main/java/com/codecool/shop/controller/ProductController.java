@@ -1,7 +1,9 @@
 package com.codecool.shop.controller;
 
+import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
+import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
@@ -28,7 +30,10 @@ public class ProductController extends HttpServlet {
         int categoryId = (category != null) ? Integer.parseInt(category) : 1;
         String supplier = req.getParameter("supplier");
         int supplierId = (supplier != null) ? Integer.parseInt(supplier) : 0;
+        String addCart = req.getParameter("add-cart");
 
+
+        CartDaoMem cartDataStore = CartDaoMem.getInstance();
         ProductDao productDataStore = ProductDaoMem.getInstance();
         SupplierDaoMem supplierDataStore = SupplierDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
@@ -37,8 +42,14 @@ public class ProductController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
 //        context.setVariable("products", productService.getAllProduct());
+        if (addCart != null)
+            cartDataStore.addProductToCart(Integer.parseInt(addCart));
+        int cartItems = cartDataStore.getAll().size();
+
+
          // Alternative setting of the template context
         Map<String, Object> params = new HashMap<>();
+        params.put("cartCounter", cartItems);
 
         if (category == null && supplier == null) {
             params.put("category", null);
