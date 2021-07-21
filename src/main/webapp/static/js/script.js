@@ -14,11 +14,11 @@ function changeSupplier() {
 
 let countQuantity = 1;
 let countEl = document.getElementById("count");
-function Quantity(){
+function plusQuantity(){
     countQuantity++;
     countEl.value = countQuantity;
 }
-function minusQuantity(){
+function minusQuantity() {
     if (countQuantity > 1 || countQuantity < 0) {
         countQuantity--;
         countEl.value = countQuantity;

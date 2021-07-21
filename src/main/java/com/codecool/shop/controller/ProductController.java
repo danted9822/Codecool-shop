@@ -3,10 +3,12 @@ package com.codecool.shop.controller;
 import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
+import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
+import com.codecool.shop.service.CartService;
 import com.codecool.shop.service.ProductService;
 import com.codecool.shop.config.TemplateEngineUtil;
 import org.thymeleaf.TemplateEngine;
@@ -30,26 +32,32 @@ public class ProductController extends HttpServlet {
         int categoryId = (category != null) ? Integer.parseInt(category) : 1;
         String supplier = req.getParameter("supplier");
         int supplierId = (supplier != null) ? Integer.parseInt(supplier) : 0;
-        String addCart = req.getParameter("add-cart");
+        int cartCounter = 0;
 
-
-        CartDaoMem cartDataStore = CartDaoMem.getInstance();
+        CartDao cartDataStore = CartDaoMem.getInstance();
         ProductDao productDataStore = ProductDaoMem.getInstance();
-        SupplierDaoMem supplierDataStore = SupplierDaoMem.getInstance();
+        SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         ProductService productService = new ProductService(productDataStore,productCategoryDataStore,supplierDataStore);
+        CartService cartService = new CartService(cartDataStore);
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
 //        context.setVariable("products", productService.getAllProduct());
+
+
+        String addCart = req.getParameter("add-cart");
+
+        if (cartService.getAll().size() == 0) cartService.add();
+
+
         if (addCart != null)
-            cartDataStore.addProductToCart(Integer.parseInt(addCart));
-        int cartItems = cartDataStore.getAll().size();
+            cartService.addProductToCart(1, productDataStore.find(Integer.parseInt(addCart)));
 
-
+        if (cartDataStore.getAll().size() != 0) cartCounter = cartService.getCartSize(1);
          // Alternative setting of the template context
         Map<String, Object> params = new HashMap<>();
-        params.put("cartCounter", cartItems);
+        params.put("cartCounter", cartCounter);
 
         if (category == null && supplier == null) {
             params.put("category", null);
@@ -62,10 +70,17 @@ public class ProductController extends HttpServlet {
             params.put("products", productDataStore.getBy(supplierDataStore.find(supplierId)));
 
         }
+//        resp.sendRedirect("/");
         context.setVariables(params);
         engine.process("product/index.html", context, resp.getWriter());
     }
 
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp);
+
+    }
 }
 
 

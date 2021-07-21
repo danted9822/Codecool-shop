@@ -9,12 +9,18 @@ import java.util.List;
 
 public interface CartDao {
 
-    void addProductToCart(int id);
-    void removeProductFromCart(int id) throws AttributeNotFoundException;
-    void resetCart();
-    float totalPrice();
-    Product getProduct(int id);
+    void add(Cart cart);
+    Cart find(int id);
+    void remove(int id);
 
-    List<Product> getAll();
+    List<Cart> getAll();
+//
+//    void addProductToCart(int id);
+//    void removeProductFromCart(int id) throws AttributeNotFoundException;
+//    void resetCart();
+//    float totalPrice();
+//    Product getProduct(int id);
+//
+//    List<Product> getAll();
 
 }

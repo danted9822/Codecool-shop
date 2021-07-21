@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CartDaoMem implements CartDao {
 
-    private Cart data = new Cart();
+    private List<Cart> data = new ArrayList<>();
     private static CartDaoMem instance = null;
 
     private CartDaoMem() {
@@ -24,28 +24,51 @@ public class CartDaoMem implements CartDao {
         return instance;
     }
 
-    public void addProductToCart(int id) {
-        data.addToCart(ProductDaoMem.getInstance().find(id));
+    @Override
+    public void add(Cart cart) {
+        cart.setId(data.size() + 1);
+        data.add(cart);
     }
 
-    public void removeProductFromCart(int id) throws AttributeNotFoundException {
-        data.removeFromCart(ProductDaoMem.getInstance().find(id));
+    @Override
+    public Cart find(int id) {
+        return data.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
     }
 
-    public Product getProduct(int id) {
-        return  data.getCart().get(id);
+    @Override
+    public void remove(int id) {
+        data.remove(find(id));
     }
 
-    public List<Product> getAll() {
-        return data.getCart();
+    @Override
+    public List<Cart> getAll() {
+        return data;
     }
 
-    public float totalPrice() {
-        return data.sumPrice();
-    }
 
-    public void resetCart() {
-        data.resetCart();
-    }
+
+//    public void addProductToCart(int id) {
+//        data.addToCart(ProductDaoMem.getInstance().find(id));
+//    }
+//
+//    public void removeProductFromCart(int id) throws AttributeNotFoundException {
+//        data.removeFromCart(ProductDaoMem.getInstance().find(id));
+//    }
+//
+//    public Product getProduct(int id) {
+//        return  data.getCart().get(id);
+//    }
+//
+//    public List<Product> getAll() {
+//        return data.getCart();
+//    }
+//
+//    public float totalPrice() {
+//        return data.sumPrice();
+//    }
+//
+//    public void resetCart() {
+//        data.resetCart();
+//    }
 
 }

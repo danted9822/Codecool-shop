@@ -6,7 +6,16 @@ import java.util.List;
 
 public class Cart {
 
+    private int id;
     private List<Product> cart;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Cart() {
         this.cart = new ArrayList<>();
@@ -53,6 +62,10 @@ public class Cart {
 
     public void resetCart() {
         cart = new ArrayList<>();
+    }
+
+    public int getSize() {
+        return cart.size();
     }
 
 
