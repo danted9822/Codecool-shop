@@ -13,6 +13,8 @@ public class CartDaoMem implements CartDao {
 
     private Cart data = new Cart();
     private static CartDaoMem instance = null;
+    private static CartDaoMem instance2 = null;
+
 
     private CartDaoMem() {
     }
@@ -22,6 +24,20 @@ public class CartDaoMem implements CartDao {
             instance = new CartDaoMem();
         }
         return instance;
+    }
+
+    public static CartDaoMem getInstance2() {
+        if (instance2 == null) {
+            instance2 = getInstance();
+        }
+        return instance2;
+    }
+
+
+
+    public static void destroyCurrentInstance() {
+        getInstance2();
+        instance = null;
     }
 
     public void addProductToCart(int id) {
