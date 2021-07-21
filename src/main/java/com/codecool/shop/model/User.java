@@ -10,7 +10,7 @@ public class User {
     private String shippingAddress;
     private Cart cart;
 
-    public User(String name, String email, int phoneNumber, String billingAddress, String shippingAddress, Cart cart) {
+    User(String name, String email, int phoneNumber, String billingAddress, String shippingAddress, Cart cart) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
