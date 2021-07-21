@@ -60,6 +60,7 @@
         <h2>Summary</h2>
     </div>
 
+<div class="container">
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
             <div class="card">
@@ -73,20 +74,20 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div id="counter_div">
-                        <input type="text" size="25" value="1" id="count">
                         <input type="button" value="-" id="minus" onclick="minusQuantity()">
+                        <input type="text" size="1" value="1" id="count">
                         <input type="button" value="+" id="plus" onclick="plusQuantity">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-</div>
 <div class="summary">
     <h3>Order summary</h3>
     <h2 th:text="'Total price: ' + ${totalPrice} + ' USD'">Total price</h2>
 </div>
+</div>
+
 
 
 <div class="counter">
