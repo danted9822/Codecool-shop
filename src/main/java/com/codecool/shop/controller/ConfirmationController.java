@@ -20,8 +20,10 @@ public class ConfirmationController extends HttpServlet {
         CartDao cartDataStore = CartDaoMem.getInstance();
         CartService cartService = new CartService(cartDataStore);
 
+        // total price
         float totalPrice = 0;
         if (cartService.getAll().size() != 0) totalPrice = cartService.getCartPrice(1);
+        // counter of the products in the cart
         int cartCounter = 0;
         if (cartDataStore.getAll().size() != 0) cartCounter = cartService.getCartSize(1);
 
@@ -32,6 +34,7 @@ public class ConfirmationController extends HttpServlet {
             context.setVariable("products",  cartService.getProductFromCart(1));
             context.setVariable("total", totalPrice);
             cartService.getCart(1).resetCart();
+            cartCounter = 0;
             context.setVariable("cartCounter", cartCounter);
         }
 
