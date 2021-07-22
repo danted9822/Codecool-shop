@@ -73,6 +73,7 @@
                         <td style="text-align: left" class="product-name" th:text="${prod.getName()}">Product name</td>
                         <td><img class="smol" th:attr="src='/static/img/product_' + *{prod.id} + '.jpg'" alt=""/></td>
                         <td style="text-align: right" th:text="${prod.getDefaultPrice() + ' ' + prod.getDefaultCurrency()}">Product price</td>
+                        <td> <button type="button" class="btn btn-outline-primary me-2 btn-lg" onclick="removeButton()"> Remove </button></td>
                     </tr>
                 </table>
             </div>
