@@ -79,6 +79,7 @@
                         <input type="text" size="1" value="1" id="count">
                         <input type="button" value="+" class="plus" th:attr="data-add_product=${prod.id}">
                     </div>
+                    <butto >Remove</butto>
                 </div>
             </div>
         </div>
@@ -86,7 +87,9 @@
 <div class="summary">
     <h3>Order summary</h3>
     <h2 th:text="'Total price: ' + ${totalPrice} + ' USD'">Total price</h2>
+    <h2> <a href="/checkout"> Checkout</a> </h2>
 </div>
+
 </div>
 
 
