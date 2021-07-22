@@ -51,7 +51,7 @@
                     <!--<scanIntervalSeconds>1</scanIntervalSeconds>-->
                     <httpConnector>
                         <!--host>localhost</host-->
-                        <port>8888</port>
+                        <port>8080</port>
                     </httpConnector>
                 </configuration>
             </plugin>
@@ -117,6 +117,11 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-chain</groupId>
+            <artifactId>commons-chain</artifactId>
+            <version>1.1</version>
         </dependency>
     </dependencies>
 </project>

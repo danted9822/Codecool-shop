@@ -74,9 +74,10 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div id="counter_div">
-                        <input type="button" value="-" id="minus" onclick="minusQuantity()">
+                        <form action="/add-to-cart"></form>
+                        <input type="button" value="-" class="minus" th:attr="data-remove_product=${prod.id}">
                         <input type="text" size="1" value="1" id="count">
-                        <input type="button" value="+" id="plus" onclick="plusQuantity">
+                        <input type="button" value="+" class="plus" th:attr="data-add_product=${prod.id}">
                     </div>
                 </div>
             </div>

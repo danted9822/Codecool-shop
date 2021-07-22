@@ -29,25 +29,22 @@ public class AddToCartController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        System.out.println("kacsa");
-        StringBuffer url = req.getRequestURL();
 
+        req.getHeader("referer");
+        System.out.println();
         ProductDao productDataStore = ProductDaoMem.getInstance();
 
         CartDao cartDataStore = CartDaoMem.getInstance();
         CartService cartService = new CartService(cartDataStore);
 
         String addCart = req.getParameter("add-cart");
-        System.out.println(addCart);
 
         if (cartService.getAll().size() == 0) cartService.add();
 
-
         if (addCart != null)
             cartService.addProductToCart(1, productDataStore.find(Integer.parseInt(addCart)));
-        System.out.println(cartService.getCart(1));
 
-//        resp.sendRedirect("/");
+        resp.sendRedirect(req.getHeader("referer"));
     }
 
 }
