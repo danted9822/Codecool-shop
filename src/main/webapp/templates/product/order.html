@@ -21,43 +21,69 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+<!--    <link rel="preconnect" href="https://fonts.gstatic.com">-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">-->
     <link rel="stylesheet" type="text/css" href="/static/css/order.css" />
 
 </head>
 <body>
+
+<div class="jumbotron text-center">
+    <h1>Codecool Shop</h1>
+</div>
+
 <div class="container">
-<div class="confirm">
-    <h1>Your order was completed successfully!</h1>
-    <p>The items you put in your cart will be shipped to the address provided within 20 working days.</p>
-    <a href="/">Back to home...</a>
-    <p>Ordered items:</p><br/>
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+        </a>
+
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
+            <li><a href="/phone" class="nav-link px-2 link-dark">Features</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+            <li><a href="/cart" class="nav-link px-2 link-dark" th:text="'Shopping cart: ' + ${cartCounter} + ' item(s)'">Shopping cart: item(s)</a></li>
+        </ul>
+
+        <div class="col-md-3 text-end">
+            <button type="button" class="btn btn-outline-primary me-2">Login</button>
+            <button type="button" class="btn btn-primary">Sign-up</button>
+        </div>
+    </header>
+</div>
+
+<div class="container">
+    <div class="confirm">
+        <h1>Your order was completed successfully!</h1>
+        <p>The items you put in your cart will be shipped to the address provided within 20 working days.</p>
+        <a href="/">Back to home...</a>
+        <div class="total" th:text="${'Total payment:'+' '+total+' USD'}">Total Price</div>
+        <p>Ordered items:</p><br/>
 
 
-    <div id="products" class="row" >
-        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}" >
-            <div class="card">
-                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
-                <div class="card-header">
+        <div id="products" class="row" >
+            <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}" >
+                <div class="card">
+                    <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
+                    <div class="card-header">
 
-                    <h4 class="card-title" th:text="${prod.getName}">Product name</h4>
-                    <p class="card-text" th:text="${prod.description}">Product description... </p>
-                </div>
-                <div class="card-body">
-                    <div class="card-text">
-                     <!-- TODO: ide jönn majd a mennyiség    <p class="lead" th:text="${prod.quantity()}+'x'">1x</p>
-                        <br>-->
-                        <p class="lead" th:text="${prod.getDefaultPrice() + ' ' + prod.getDefaultCurrency()}"></p>
+                        <h4 class="card-title" th:text="${prod.getName}">Product name</h4>
+                        <p class="card-text" th:text="${prod.description}">Product description... </p>
                     </div>
+                    <div class="card-body">
+                        <div class="card-text">
+                         <!-- TODO: ide jönn majd a mennyiség    <p class="lead" th:text="${prod.quantity()}+'x'">1x</p>
+                            <br>-->
+                            <p class="lead" th:text="${prod.getDefaultPrice() + ' ' + prod.getDefaultCurrency()}"></p>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
-
         </div>
-        <div class="total" th:each="prod,iterStat : ${products}" th:text="${'Total payment:'+' '+total+' '+prod.getDefaultCurrency()}"></div>
     </div>
-</div>
 </div>
 
 </body>

@@ -1,6 +1,4 @@
-* {
-    font-family: 'Pangolin', cursive;
-}
+
 body {
     opacity: 0.92;
 }
@@ -11,7 +9,7 @@ body {
     opacity: 0.8;
     min-height: 78vh;
     height: auto;
-    width: 100vw;
+    width: 100%;
 }
 
 .shopping-cart {
@@ -97,11 +95,9 @@ input.in-modal:nth-of-type(5) {
 }
 
 .total {
-    position: absolute;
-    top: 28%;
-    left: 9%;
     font-size: x-large;
 }
+
 
 table {
     text-align: center;
@@ -114,4 +110,8 @@ table {
 #products {
     justify-content: center;
     text-align: -webkit-center;
+}
+
+input {
+    margin-bottom: 3px;
 }

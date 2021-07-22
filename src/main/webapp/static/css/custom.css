@@ -66,3 +66,29 @@
 {
     clear: both;
 }
+
+.payment-container {
+    opacity: 0.8;
+    min-height: 78vh;
+    height: auto;
+    width: 70%;
+    margin: auto;
+}
+
+/*.shopping-cart {*/
+/*    display: flex;*/
+/*    flex-flow: column;*/
+/*    margin: 20px;*/
+/*    padding: 40px;*/
+/*    line-height: 250%;*/
+/*}*/
+
+.payment-info:hover {
+    opacity: 1;
+}
+
+table {
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+}

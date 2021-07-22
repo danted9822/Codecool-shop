@@ -61,33 +61,51 @@
     </div>
 
 <div class="container">
-    <div id="products" class="row">
-        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
-            <div class="card">
-                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
-                <div class="card-header">
-                    <h4 class="card-title" th:text="${prod.name}">Product name</h4>
-                    <p class="card-text" th:text="${prod.description}">Product description... </p>
-                </div>
-                <div class="card-body">
-                    <div class="card-text">
-                        <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
-                    </div>
-                    <div id="counter_div">
-                        <form action="/add-to-cart"></form>
-                        <input type="button" value="-" class="minus" th:attr="data-remove_product=${prod.id}">
-                        <input type="text" size="1" value="1" id="count">
-                        <input type="button" value="+" class="plus" th:attr="data-add_product=${prod.id}">
-                    </div>
-                    <butto >Remove</butto>
-                </div>
+    <div class="payment-container">
+        <div class="shopping-cart">
+            <div class="cart">
+                <h2>Shopping Cart</h2>
             </div>
+
+            <div class="items" th:each="prod,iterStat : ${products}">
+                <table class="table product-container">
+                    <tr class="item" >
+                        <td style="text-align: left" class="product-name" th:text="${prod.getName()}">Product name</td>
+                        <td><img class="smol" th:attr="src='/static/img/product_' + *{prod.id} + '.jpg'" alt=""/></td>
+                        <td style="text-align: right" th:text="${prod.getDefaultPrice() + ' ' + prod.getDefaultCurrency()}">Product price</td>
+                    </tr>
+                </table>
+            </div>
+
         </div>
     </div>
+<!--    <div id="products" class="row">-->
+<!--        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">-->
+<!--            <div class="card">-->
+<!--                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />-->
+<!--                <div class="card-header">-->
+<!--                    <h4 class="card-title" th:text="${prod.name}">Product name</h4>-->
+<!--                    <p class="card-text" th:text="${prod.description}">Product description... </p>-->
+<!--                </div>-->
+<!--                <div class="card-body">-->
+<!--                    <div class="card-text">-->
+<!--                        <p class="lead" th:text="${prod.getPrice()}">100 USD</p>-->
+<!--                    </div>-->
+<!--                    <div id="counter_div">-->
+<!--                        <form action="/add-to-cart"></form>-->
+<!--                        <input type="button" value="-" class="minus" th:attr="data-remove_product=${prod.id}">-->
+<!--                        <input type="text" size="1" value="1" id="count">-->
+<!--                        <input type="button" value="+" class="plus" th:attr="data-add_product=${prod.id}">-->
+<!--                    </div>-->
+<!--                    <button>Remove</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 <div class="summary">
     <h3>Order summary</h3>
     <h2 th:text="'Total price: ' + ${totalPrice} + ' USD'">Total price</h2>
-    <h2> <a href="/checkout"> Checkout</a> </h2>
+    <h2 align="right"><button type="button" class="btn btn-outline-primary me-2 btn-lg" onclick="checkoutButton()">Checkout</button></h2>
+</div>
 </div>
 
 </div>

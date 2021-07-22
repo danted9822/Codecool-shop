@@ -46,3 +46,7 @@ document.querySelectorAll(".plus").forEach(button => button.addEventListener("cl
 document.querySelectorAll(".minus").forEach(button => button.addEventListener("click", function() {
     this.nextElementSibling.value = parseInt(this.nextElementSibling.value) - 1;
 }));
+
+function checkoutButton(){
+    location.href = "/checkout";
+}

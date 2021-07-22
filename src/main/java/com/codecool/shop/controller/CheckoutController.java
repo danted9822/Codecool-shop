@@ -25,6 +25,9 @@ public class CheckoutController extends HttpServlet {
         float totalPrice = 0;
         if (cartService.getAll().size() != 0) totalPrice = cartService.getCartPrice(1);
 
+        int cartCounter = 0;
+        if (cartDataStore.getAll().size() != 0) cartCounter = cartService.getCartSize(1);
+
         if (cartDataStore.getAll().size() == 0) {
             resp.sendRedirect("http://localhost:8080/");
         }
@@ -35,6 +38,7 @@ public class CheckoutController extends HttpServlet {
         if (cartDataStore.getAll() != null) {
             context.setVariable("products", cartService.getProductFromCart(1));
             context.setVariable("total", totalPrice);
+            context.setVariable("cartCounter", cartCounter);
         }
 
         engine.process("product/checkout.html", context, resp.getWriter());
