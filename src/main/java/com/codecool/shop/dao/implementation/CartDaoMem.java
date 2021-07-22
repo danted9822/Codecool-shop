@@ -45,9 +45,9 @@ public class CartDaoMem implements CartDao {
         return data;
     }
 
-    public float totalPrice() {
-        return data.sumPrice();
-    }
+//    public float totalPrice() {
+//        return data.sumPrice();
+//    }
 
 
 //    public void addProductToCart(int id) {

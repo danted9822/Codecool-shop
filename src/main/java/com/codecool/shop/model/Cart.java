@@ -9,16 +9,17 @@ public class Cart {
     private int id;
     private List<Product> cart;
 
+
+    public Cart() {
+        this.cart = new ArrayList<>();
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Cart() {
-        this.cart = new ArrayList<>();
     }
 
     public List<Product> getCart() {
