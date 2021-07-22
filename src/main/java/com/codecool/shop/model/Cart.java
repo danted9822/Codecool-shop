@@ -36,19 +36,22 @@ public class Cart {
     }
 
     public void removeFromCart(Product product) throws AttributeNotFoundException {
+        List<Product> cartTemp = new ArrayList<>();
+        cartTemp.addAll(cart);
         if(!isEmpty()) {
             for(Product item:cart) {
-                System.out.println(item);
                 if (item.equals(product)) {
-                    cart.remove(product);
+                    cartTemp.remove(product);
                 }
                 else {
                     System.out.println("This product is not in the cart!");
                 }
             }
+            cart.clear();
+            cart.addAll(cartTemp);
         }
         else {
-            throw new ArrayIndexOutOfBoundsException("The cart is empty!");
+            System.out.println("The cart is empty!");
         }
     }
 

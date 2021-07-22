@@ -3,15 +3,17 @@ package com.codecool.shop.model;
 import java.util.HashMap;
 
 public class User {
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
     private int phoneNumber;
     private String billingAddress;
     private String shippingAddress;
     private Cart cart;
 
-    User(String name, String email, int phoneNumber, String billingAddress, String shippingAddress, Cart cart) {
-        this.name = name;
+    User(String firstName, String lastName, String email, int phoneNumber, String billingAddress, String shippingAddress, Cart cart) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.billingAddress = billingAddress;
@@ -19,12 +21,20 @@ public class User {
         this.cart = cart;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {

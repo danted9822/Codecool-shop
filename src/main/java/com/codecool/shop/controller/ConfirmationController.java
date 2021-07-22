@@ -25,11 +25,13 @@ public class ConfirmationController extends HttpServlet {
         int cartCounter = 0;
         if (cartDataStore.getAll().size() != 0) cartCounter = cartService.getCartSize(1);
 
+
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         if (cartDataStore.getAll() != null) {
             context.setVariable("products",  cartService.getProductFromCart(1));
             context.setVariable("total", totalPrice);
+            cartService.getCart(1).resetCart();
             context.setVariable("cartCounter", cartCounter);
         }
 

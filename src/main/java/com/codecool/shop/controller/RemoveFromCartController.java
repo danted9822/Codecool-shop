@@ -25,7 +25,6 @@ public class RemoveFromCartController extends HttpServlet {
         CartService cartService = new CartService(cartDataStore);
 
         String removeProduct = req.getParameter("product-id");
-        System.out.println("remove id " + removeProduct);
 
         if (removeProduct != null) {
             try {
@@ -34,7 +33,6 @@ public class RemoveFromCartController extends HttpServlet {
                 System.out.println(e.getMessage());
             }
         }
-
         resp.sendRedirect("/cart");
     }
 
