@@ -38,11 +38,12 @@ public class Cart {
     public void removeFromCart(Product product) throws AttributeNotFoundException {
         if(!isEmpty()) {
             for(Product item:cart) {
+                System.out.println(item);
                 if (item.equals(product)) {
                     cart.remove(product);
                 }
                 else {
-                    throw new AttributeNotFoundException("This product is not in the cart!");
+                    System.out.println("This product is not in the cart!");
                 }
             }
         }

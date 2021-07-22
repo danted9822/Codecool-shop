@@ -35,6 +35,10 @@
     transform: scale(1.05);
 }
 
+.fa {
+    scale: 1.5;
+}
+
 .item.list-group-item .list-group-image
 {
     margin-right: 10px;

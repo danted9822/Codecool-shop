@@ -18,18 +18,18 @@ public class RemoveFromCartController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
         ProductDao productDataStore = ProductDaoMem.getInstance();
 
         CartDao cartDataStore = CartDaoMem.getInstance();
         CartService cartService = new CartService(cartDataStore);
 
-        String removeCart = req.getParameter("remove-cart");
+        String removeProduct = req.getParameter("product-id");
+        System.out.println("remove id " + removeProduct);
 
-        if (cartService.getAll().size() == 0) cartService.add();
-
-        if (removeCart != null) {
+        if (removeProduct != null) {
             try {
-                cartService.removeProductFromCart(1, productDataStore.find(Integer.parseInt(removeCart)));
+                cartService.removeProductFromCart(1, productDataStore.find(Integer.parseInt(removeProduct)));
             } catch (AttributeNotFoundException e) {
                 System.out.println(e.getMessage());
             }

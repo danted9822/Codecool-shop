@@ -44,6 +44,8 @@ public class AddToCartController extends HttpServlet {
         if (addCart != null)
             cartService.addProductToCart(1, productDataStore.find(Integer.parseInt(addCart)));
 
+        System.out.println(cartService.getCart(1).getCart());
+
         resp.sendRedirect(req.getHeader("referer"));
     }
 

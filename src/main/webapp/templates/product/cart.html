@@ -27,6 +27,8 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
     <script src="/static/js/script.js" defer></script>
 </head>
@@ -73,7 +75,7 @@
                         <td style="text-align: left" class="product-name" th:text="${prod.getName()}">Product name</td>
                         <td><img class="smol" th:attr="src='/static/img/product_' + *{prod.id} + '.jpg'" alt=""/></td>
                         <td style="text-align: right" th:text="${prod.getDefaultPrice() + ' ' + prod.getDefaultCurrency()}">Product price</td>
-                        <td> <button type="button" class="btn btn-outline-primary me-2 btn-lg" onclick="removeButton()"> Remove </button></td>
+                        <td><i class="fa fa-trash" aria-hidden="true" th:attr="data-remove_id=${prod.id}"></i></td>
                     </tr>
                 </table>
             </div>
@@ -109,7 +111,6 @@
 </div>
 </div>
 
-</div>
 
 
 

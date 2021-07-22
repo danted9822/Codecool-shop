@@ -50,3 +50,13 @@ document.querySelectorAll(".minus").forEach(button => button.addEventListener("c
 function checkoutButton(){
     location.href = "/checkout";
 }
+
+document.querySelectorAll(".fa-trash").forEach(fa => fa.addEventListener("click", function() {
+    let dataPlus = this;
+
+    console.log(dataPlus);
+    let data = dataPlus.getAttribute('data-remove_id');
+    console.log(data);
+    location.href = "/remove-from-cart?product-id=" + data;
+
+}));
