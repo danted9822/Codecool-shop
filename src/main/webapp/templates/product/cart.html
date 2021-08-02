@@ -72,10 +72,17 @@
             <div class="items" th:each="prod,iterStat : ${products}">
                 <table class="table product-container">
                     <tr class="item" >
-                        <td style="text-align: left" class="product-name" th:text="${prod.getKey().getName()}">Product name</td>
-                        <td><img class="smol" th:attr="src='/static/img/product_' + *{prod.getKey().id} + '.jpg'" alt=""/></td>
-                        <td style="text-align: right" th:text="${prod.getKey().getDefaultPrice() + ' ' + prod.getKey().getDefaultCurrency()}">Product price</td>
-                        <td><i class="fa fa-trash" aria-hidden="true" th:attr="data-remove_id=${prod.getKey().id}"></i></td>
+                        <td style="text-align: left" class="product-name" th:text="${prod.key.name}">Product name</td>
+                        <td><img class="smol" th:attr="src='/static/img/product_' + *{prod.key.id} + '.jpg'" alt=""/></td>
+                        <td style="text-align: right" th:text="${prod.key.defaultPrice} + ' ' + ${prod.key.defaultCurrency}">Product price</td>
+                        <td><i class="fa fa-trash" aria-hidden="true" th:attr="data-remove_id=${prod.key.id}"></i>
+                            <div id="counter_div">
+                                <form action="/add-to-order"></form>
+                                <input type="button" value="-" class="minus" th:attr="data-remove_product=${prod.key.id}">
+                                <input type="text" size="1" th:attr="value=${prod.value}" id="count">
+                                <input type="button" value="+" class="plus" th:attr="data-add_product=${prod.key.id}">
+                            </div>
+                        </td>
                     </tr>
                 </table>
             </div>

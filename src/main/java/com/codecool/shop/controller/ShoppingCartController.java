@@ -38,17 +38,18 @@ public class ShoppingCartController extends HttpServlet {
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
-//        context.setVariable("category", productService.getProductCategory(1));
-//        context.setVariable("products", productService.getProductsForSupplier(1));
          // Alternative setting of the template context
         float totalPrice = 0;
 
         if (orderService.getAll().size() != 0) totalPrice = orderService.getCartPrice(1);
-         Map<String, Object> params = new HashMap<>();
-         params.put("totalPrice", totalPrice);
-         params.put("category", productCategoryDataStore.find(1));
-         params.put("products", orderService.getOrder(1).getCart());
-         context.setVariables(params);
+        context.setVariable("category", productService.getProductCategory(1));
+        context.setVariable("products", orderService.getOrder(1).getCart());
+        context.setVariable("totalPrice", totalPrice);
+//         Map<String, Object> params = new HashMap<>();
+//         params.put("totalPrice", totalPrice);
+//         params.put("category", productCategoryDataStore.find(1));
+//         params.put("products", orderService.getOrder(1).getCart());
+//         context.setVariables(params);
         engine.process("product/cart.html", context, resp.getWriter());
     }
 

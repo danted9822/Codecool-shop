@@ -40,14 +40,18 @@ function changeSupplier() {
 // }
 
 
-// product quantity add
+// product quantity increase
 document.querySelectorAll(".plus").forEach(button => button.addEventListener("click", function() {
     this.previousElementSibling.value = parseInt(this.previousElementSibling.value) + 1;
+    let data = this.getAttribute("data-add_product");
+    location.href = "/add-to-cart?add-cart=" + data;
 }));
 
-// product quantity remove
+// product quantity decrease
 document.querySelectorAll(".minus").forEach(button => button.addEventListener("click", function() {
     this.nextElementSibling.value = parseInt(this.nextElementSibling.value) - 1;
+    let data = this.getAttribute("data-remove_product");
+    location.href = "/decrease-product?decrease-cart=" + data;
 }));
 
 function checkoutButton(){
