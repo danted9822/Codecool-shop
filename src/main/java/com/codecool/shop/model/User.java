@@ -1,6 +1,7 @@
 package com.codecool.shop.model;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class User {
     private String firstName;
@@ -9,16 +10,16 @@ public class User {
     private int phoneNumber;
     private String billingAddress;
     private String shippingAddress;
-    private Cart cart;
+    private List orders;
 
-    User(String firstName, String lastName, String email, int phoneNumber, String billingAddress, String shippingAddress, Cart cart) {
+    User(String firstName, String lastName, String email, int phoneNumber, String billingAddress, String shippingAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.billingAddress = billingAddress;
         this.shippingAddress = shippingAddress;
-        this.cart = cart;
+        this.orders.add(new Order());
     }
 
     public String getFirstName() {
@@ -85,7 +86,7 @@ public class User {
         return DictionaryAddress;
     }
 
-    public Cart getCart() {
-        return cart;
-    }
+//    public Order getCart() {
+//        return cart;
+//    }
 }

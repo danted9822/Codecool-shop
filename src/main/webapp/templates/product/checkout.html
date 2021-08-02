@@ -53,7 +53,7 @@
       <!--<li><a href="/phone" class="nav-link px-2 link-dark">Features</a></li>
       <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
       <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>-->
-      <li><a href="/cart" class="nav-link px-2 link-dark" th:text="'Shopping cart: ' + ${cartCounter} + ' item(s)'">Shopping cart: item(s)</a></li>
+      <li><a href="/order" class="nav-link px-2 link-dark" th:text="'Shopping order: ' + ${cartCounter} + ' item(s)'">Shopping order: item(s)</a></li>
     </ul>
 
     <div class="col-md-3 text-end">
@@ -84,7 +84,7 @@
           <input class="in-modal" type="text" required id="expiry" minlength="1" maxlength="2" size="2" placeholder="MM"><span id="slash">/</span>
           <input class="in-modal" type="text" required id="year" minlength="1" maxlength="2" size="2" placeholder="YY"><br>
           <label for="code">Code: </label>
-          <input class="in-modal" type="text" required id="code" minlength="3" maxlength="3" size="3">
+          <input class="in-modal" type="password" required id="code" minlength="3" maxlength="3" size="3">
         </div>
         <div class="paypal">
           <label for="username">Username: </label>
@@ -103,8 +103,8 @@
 
 <div class="container">
   <div class="payment-container">
-    <div class="shopping-cart">
-      <div class="cart">
+    <div class="shopping-order">
+      <div class="order">
         <h2>Shopping Cart</h2>
       </div>
 
@@ -145,7 +145,7 @@
 
       <div class="submit">
         <button id="paywith" class="btn btn-primary" data-toggle="modal" data-target="#modal">Pay with</button>
-        <button class="btn btn-outline-primary" id="back-to-cart" type="submit">Back to cart</button>
+        <button class="btn btn-outline-primary" id="back-to-order" type="submit">Back to order</button>
       </div>
     </div>
   </div>

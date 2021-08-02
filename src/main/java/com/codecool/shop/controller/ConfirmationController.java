@@ -1,9 +1,9 @@
 package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
-import com.codecool.shop.dao.CartDao;
-import com.codecool.shop.dao.implementation.CartDaoMem;
-import com.codecool.shop.service.CartService;
+import com.codecool.shop.dao.OrderDao;
+import com.codecool.shop.dao.implementation.OrderDaoMem;
+import com.codecool.shop.service.OrderService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import javax.servlet.ServletException;
@@ -17,23 +17,23 @@ import java.io.IOException;
 public class ConfirmationController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CartDao cartDataStore = CartDaoMem.getInstance();
-        CartService cartService = new CartService(cartDataStore);
+        OrderDao cartDataStore = OrderDaoMem.getInstance();
+        OrderService orderService = new OrderService(cartDataStore);
 
         // total price
         float totalPrice = 0;
-        if (cartService.getAll().size() != 0) totalPrice = cartService.getCartPrice(1);
+        if (orderService.getAll().size() != 0) totalPrice = orderService.getCartPrice(1);
         // counter of the products in the cart
         int cartCounter = 0;
-        if (cartDataStore.getAll().size() != 0) cartCounter = cartService.getCartSize(1);
+        if (cartDataStore.getAll().size() != 0) cartCounter = orderService.getCartSize(1);
 
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         if (cartDataStore.getAll() != null) {
-            context.setVariable("products",  cartService.getProductFromCart(1));
+            context.setVariable("products",  orderService.getProductFromCart(1));
             context.setVariable("total", totalPrice);
-            cartService.getCart(1).resetCart();
+            orderService.getOrder(1).resetCart();
             cartCounter = 0;
             context.setVariable("cartCounter", cartCounter);
         }

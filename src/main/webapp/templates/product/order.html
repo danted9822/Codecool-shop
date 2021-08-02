@@ -40,7 +40,7 @@
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
-            <li><a href="/cart" class="nav-link px-2 link-dark" th:text="'Shopping cart: ' + ${cartCounter} + ' item(s)'">Shopping cart: item(s)</a></li>
+            <li><a href="/order" class="nav-link px-2 link-dark" th:text="'Shopping order: ' + ${cartCounter} + ' item(s)'">Shopping order: item(s)</a></li>
         </ul>
 
         <div class="col-md-3 text-end">
@@ -53,7 +53,7 @@
 <div class="container">
     <div class="confirm">
         <h1>Your order was completed successfully!</h1>
-        <p>The items you put in your cart will be shipped to the address provided within 20 working days.</p>
+        <p>The items you put in your order will be shipped to the address provided within 20 working days.</p>
         <a href="/">Back to home...</a>
         <div class="total" th:text="${'Total payment:'+' '+total+' USD'}">Total Price</div>
         <p>Ordered items:</p><br/>

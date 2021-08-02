@@ -1,10 +1,10 @@
 package com.codecool.shop.controller;
 
-import com.codecool.shop.dao.CartDao;
+import com.codecool.shop.dao.OrderDao;
 import com.codecool.shop.dao.ProductDao;
-import com.codecool.shop.dao.implementation.CartDaoMem;
+import com.codecool.shop.dao.implementation.OrderDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
-import com.codecool.shop.service.CartService;
+import com.codecool.shop.service.OrderService;
 
 import javax.management.AttributeNotFoundException;
 import javax.servlet.annotation.WebServlet;
@@ -21,14 +21,14 @@ public class RemoveFromCartController extends HttpServlet {
 
         ProductDao productDataStore = ProductDaoMem.getInstance();
 
-        CartDao cartDataStore = CartDaoMem.getInstance();
-        CartService cartService = new CartService(cartDataStore);
+        OrderDao cartDataStore = OrderDaoMem.getInstance();
+        OrderService orderService = new OrderService(cartDataStore);
 
         String removeProduct = req.getParameter("product-id");
 
         if (removeProduct != null) {
             try {
-                cartService.removeProductFromCart(1, productDataStore.find(Integer.parseInt(removeProduct)));
+                orderService.removeProductFromCart(1, productDataStore.find(Integer.parseInt(removeProduct)));
             } catch (AttributeNotFoundException e) {
                 System.out.println(e.getMessage());
             }

@@ -1,14 +1,14 @@
 package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
-import com.codecool.shop.dao.CartDao;
+import com.codecool.shop.dao.OrderDao;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
-import com.codecool.shop.dao.implementation.CartDaoMem;
+import com.codecool.shop.dao.implementation.OrderDaoMem;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
-import com.codecool.shop.service.CartService;
+import com.codecool.shop.service.OrderService;
 import com.codecool.shop.service.ProductService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -31,10 +31,10 @@ public class ShoppingCartController extends HttpServlet {
         String category = req.getParameter("category");
         ProductDao productDataStore = ProductDaoMem.getInstance();
         SupplierDaoMem supplierDataStore = SupplierDaoMem.getInstance();
-        CartDao cartDataStore = CartDaoMem.getInstance();
+        OrderDao cartDataStore = OrderDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         ProductService productService = new ProductService(productDataStore,productCategoryDataStore,supplierDataStore);
-        CartService cartService = new CartService(cartDataStore);
+        OrderService orderService = new OrderService(cartDataStore);
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
@@ -42,11 +42,12 @@ public class ShoppingCartController extends HttpServlet {
 //        context.setVariable("products", productService.getProductsForSupplier(1));
          // Alternative setting of the template context
         float totalPrice = 0;
-        if (cartService.getAll().size() != 0) totalPrice = cartService.getCartPrice(1);
+
+        if (orderService.getAll().size() != 0) totalPrice = orderService.getCartPrice(1);
          Map<String, Object> params = new HashMap<>();
          params.put("totalPrice", totalPrice);
          params.put("category", productCategoryDataStore.find(1));
-         params.put("products", cartService.getCart(1).getCart());
+         params.put("products", orderService.getOrder(1).getCart());
          context.setVariables(params);
         engine.process("product/cart.html", context, resp.getWriter());
     }

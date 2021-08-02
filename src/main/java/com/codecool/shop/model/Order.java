@@ -1,0 +1,101 @@
+package com.codecool.shop.model;
+
+import javax.management.AttributeNotFoundException;
+import java.time.LocalDateTime;
+import java.util.*;
+
+public class Order {
+
+    public enum OrderStatus {
+        CHECKED, PAID, CONFIRMED, SHIPPED;
+    }
+
+    private int id;
+    private LocalDateTime date;
+    private OrderStatus status;
+    private Map<Product, Integer> cart;
+
+
+    public Order() {
+        this.cart = new HashMap<>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public void setCart(Map<Product, Integer> cart) {
+        this.cart = cart;
+    }
+
+    public Map<Product, Integer> getCart() {
+        return cart;
+    }
+
+    /** Add product to cart & increase quantity */
+    public void addToCart(Product product) {
+        if (!cart.containsKey(product)) {
+            cart.put(product, 1);
+        } else {
+            cart.put(product, cart.get(product) + 1);
+        }
+    }
+
+    /** Decrease product quantity in cart */
+    public void decreaseProductInCart(Product product) {
+        if (!isEmpty()) {
+            cart.put(product, cart.get(product) - 1);
+            if (cart.get(product) == 0) cart.remove(product);
+        }
+    }
+
+    /** Remove product from cart */
+    public void removeFromCart(Product product) {
+        if(!isEmpty()) {
+            cart.remove(product);
+        }
+    }
+
+    public boolean isEmpty() {
+        return cart.size() == 0;
+    }
+
+    /** Summarise the prize of all products in cart */
+    public float sumPrice() {
+        float totalPrize = 0;
+        if (!isEmpty()) {
+            for (Map.Entry<Product, Integer> product : cart.entrySet()) {
+                totalPrize += product.getKey().getDefaultPrice() * product.getValue();
+            }
+        }
+        return totalPrize;
+    }
+
+    public void resetCart() {
+        cart = new HashMap<>();
+    }
+
+    public int getCartSize() {
+        return cart.size();
+    }
+}

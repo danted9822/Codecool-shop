@@ -7,6 +7,7 @@ import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 
 import java.util.List;
+import java.util.stream.*;
 
 public class ProductService{
     private ProductDao productDao;
@@ -41,4 +42,6 @@ public class ProductService{
     public List<Product> getAllProduct() {
         return productDao.getAll();
     }
+
+    Stream sdf;
 }

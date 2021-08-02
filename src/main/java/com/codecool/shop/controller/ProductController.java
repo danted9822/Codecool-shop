@@ -1,14 +1,14 @@
 package com.codecool.shop.controller;
 
-import com.codecool.shop.dao.CartDao;
+import com.codecool.shop.dao.OrderDao;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
-import com.codecool.shop.dao.implementation.CartDaoMem;
+import com.codecool.shop.dao.implementation.OrderDaoMem;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
-import com.codecool.shop.service.CartService;
+import com.codecool.shop.service.OrderService;
 import com.codecool.shop.service.ProductService;
 import com.codecool.shop.config.TemplateEngineUtil;
 import org.thymeleaf.TemplateEngine;
@@ -34,12 +34,12 @@ public class ProductController extends HttpServlet {
         int supplierId = (supplier != null) ? Integer.parseInt(supplier) : 0;
         int cartCounter = 0;
 
-        CartDao cartDataStore = CartDaoMem.getInstance();
+        OrderDao cartDataStore = OrderDaoMem.getInstance();
         ProductDao productDataStore = ProductDaoMem.getInstance();
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         ProductService productService = new ProductService(productDataStore,productCategoryDataStore,supplierDataStore);
-        CartService cartService = new CartService(cartDataStore);
+        OrderService orderService = new OrderService(cartDataStore);
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
@@ -48,13 +48,13 @@ public class ProductController extends HttpServlet {
 
         String addCart = req.getParameter("add-cart");
 
-        if (cartService.getAll().size() == 0) cartService.add();
+        if (orderService.getAll().size() == 0) orderService.add();
 
 
         if (addCart != null)
-            cartService.addProductToCart(1, productDataStore.find(Integer.parseInt(addCart)));
+            orderService.addProductToCart(1, productDataStore.find(Integer.parseInt(addCart)));
 
-        if (cartDataStore.getAll().size() != 0) cartCounter = cartService.getCartSize(1);
+        if (cartDataStore.getAll().size() != 0) cartCounter = orderService.getCartSize(1);
          // Alternative setting of the template context
         Map<String, Object> params = new HashMap<>();
         params.put("cartCounter", cartCounter);

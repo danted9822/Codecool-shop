@@ -64,18 +64,18 @@
 
 <div class="container">
     <div class="payment-container">
-        <div class="shopping-cart">
-            <div class="cart">
+        <div class="shopping-order">
+            <div class="order">
                 <h2>Shopping Cart</h2>
             </div>
 
             <div class="items" th:each="prod,iterStat : ${products}">
                 <table class="table product-container">
                     <tr class="item" >
-                        <td style="text-align: left" class="product-name" th:text="${prod.getName()}">Product name</td>
-                        <td><img class="smol" th:attr="src='/static/img/product_' + *{prod.id} + '.jpg'" alt=""/></td>
-                        <td style="text-align: right" th:text="${prod.getDefaultPrice() + ' ' + prod.getDefaultCurrency()}">Product price</td>
-                        <td><i class="fa fa-trash" aria-hidden="true" th:attr="data-remove_id=${prod.id}"></i></td>
+                        <td style="text-align: left" class="product-name" th:text="${prod.getKey().getName()}">Product name</td>
+                        <td><img class="smol" th:attr="src='/static/img/product_' + *{prod.getKey().id} + '.jpg'" alt=""/></td>
+                        <td style="text-align: right" th:text="${prod.getKey().getDefaultPrice() + ' ' + prod.getKey().getDefaultCurrency()}">Product price</td>
+                        <td><i class="fa fa-trash" aria-hidden="true" th:attr="data-remove_id=${prod.getKey().id}"></i></td>
                     </tr>
                 </table>
             </div>
@@ -95,7 +95,7 @@
 <!--                        <p class="lead" th:text="${prod.getPrice()}">100 USD</p>-->
 <!--                    </div>-->
 <!--                    <div id="counter_div">-->
-<!--                        <form action="/add-to-cart"></form>-->
+<!--                        <form action="/add-to-order"></form>-->
 <!--                        <input type="button" value="-" class="minus" th:attr="data-remove_product=${prod.id}">-->
 <!--                        <input type="text" size="1" value="1" id="count">-->
 <!--                        <input type="button" value="+" class="plus" th:attr="data-add_product=${prod.id}">-->
