@@ -76,11 +76,11 @@
                         <td><img class="smol" th:attr="src='/static/img/product_' + *{prod.key.id} + '.jpg'" alt=""/></td>
                         <td style="text-align: right" th:text="${prod.key.defaultPrice} + ' ' + ${prod.key.defaultCurrency}">Product price</td>
                         <td><i class="fa fa-trash" aria-hidden="true" th:attr="data-remove_id=${prod.key.id}"></i>
-                            <div id="counter_div">
+                            <div id="counter_div" class="qty mt-5">
                                 <form action="/add-to-order"></form>
-                                <input type="button" value="-" class="minus" th:attr="data-remove_product=${prod.key.id}">
-                                <input type="text" size="1" th:attr="value=${prod.value}" id="count">
-                                <input type="button" value="+" class="plus" th:attr="data-add_product=${prod.key.id}">
+                                <input type="button" value="&#6150" class="minus bg-dark" th:attr="data-remove_product=${prod.key.id}">
+                                <input type="text" size="1" th:attr="value=${prod.value}" id="count" class="count" name="qty">
+                                <input type="button" value="+" class="plus bg-dark" th:attr="data-add_product=${prod.key.id}">
                             </div>
                         </td>
                     </tr>

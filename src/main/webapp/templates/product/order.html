@@ -62,17 +62,17 @@
         <div id="products" class="row" >
             <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}" >
                 <div class="card">
-                    <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
+                    <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.key.id} + '.jpg'" alt="" />
                     <div class="card-header">
 
-                        <h4 class="card-title" th:text="${prod.getName}">Product name</h4>
-                        <p class="card-text" th:text="${prod.description}">Product description... </p>
+                        <h4 class="card-title" th:text="${prod.key.name}">Product name</h4>
+                        <p class="card-text" th:text="${prod.key.description}">Product description... </p>
                     </div>
                     <div class="card-body">
                         <div class="card-text">
                          <!-- TODO: ide jönn majd a mennyiség    <p class="lead" th:text="${prod.quantity()}+'x'">1x</p>
                             <br>-->
-                            <p class="lead" th:text="${prod.getDefaultPrice() + ' ' + prod.getDefaultCurrency()}"></p>
+                            <p class="lead" th:text="${prod.key.defaultPrice} + ' ' + ${prod.key.defaultCurrency}"></p>
                         </div>
                     </div>
 
