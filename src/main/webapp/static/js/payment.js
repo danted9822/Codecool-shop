@@ -99,5 +99,3 @@ document.getElementById('back-to-cart').addEventListener('click', function() {
 });
 
 // document.getElementById('pay').addEventListener('click', collectUserData);
-
-

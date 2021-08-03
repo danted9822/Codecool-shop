@@ -26,14 +26,14 @@ public class AddToCartController extends HttpServlet {
 
         String addCart = req.getParameter("add-cart");
 
-        System.out.println(orderService.getAll().size());
+//        System.out.println(orderService.getAll().size());
         if (orderService.getAll().size() == 0) orderService.add();
 
-        System.out.println(orderService.getAll().size());
+//        System.out.println(orderService.getAll().size());
         if (addCart != null)
             orderService.addProductToCart(1, productDataStore.find(Integer.parseInt(addCart)));
 
-        System.out.println(orderService.getOrder(1).getCart());
+//        System.out.println(orderService.getOrder(1).getCart());
 
         resp.sendRedirect(req.getHeader("referer"));
     }
