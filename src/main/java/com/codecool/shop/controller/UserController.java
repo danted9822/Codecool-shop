@@ -28,7 +28,7 @@ import java.io.IOException;
 
 
 @WebServlet(urlPatterns = {"/userinfo"})
-public class UserInfo extends HttpServlet {
+public class UserController extends HttpServlet {
 
 
     @Override

@@ -77,7 +77,7 @@ function collectUserData() {
         customer['username'] = document.getElementById('username').value;
     }
 
-    fetch('/confirmation', {
+    fetch('/userinfo', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -85,17 +85,16 @@ function collectUserData() {
         },
         body: JSON.stringify(customer)
     }).then(resp => {
+        console.log("siker")
         if (resp.status === 200) window.location = '/confirmation';
     });
 }
 // pay button on modal
-document.getElementById('pay-button').addEventListener('click', function() {
-    location.href = '/confirmation';
-});
+document.getElementById('pay-button').addEventListener('click', collectUserData);
 
 //back to cart button
 document.getElementById('back-to-cart').addEventListener('click', function() {
     location.href = '/cart';
 });
 
-// document.getElementById('pay').addEventListener('click', collectUserData);
+document.getElementById('pay').addEventListener('click', collectUserData);

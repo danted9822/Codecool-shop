@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class User {
+    private int id;
     private String firstName;
     private String lastName;
     private String email;
@@ -20,6 +21,14 @@ public class User {
         this.billingAddress = billingAddress;
         this.shippingAddress = shippingAddress;
         this.orders.add(new Order());
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
