@@ -13,6 +13,7 @@ public class User {
     private String shippingAddress;
     private ArrayList orders = new ArrayList(5);
 
+
     public User(String firstName, String lastName, String email, String phoneNumber, String billingAddress, String shippingAddress) {
         this.firstName = firstName;
         this.lastName = lastName;

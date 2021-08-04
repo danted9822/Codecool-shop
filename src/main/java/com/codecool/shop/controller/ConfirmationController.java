@@ -5,6 +5,9 @@ import com.codecool.shop.dao.OrderDao;
 import com.codecool.shop.dao.UserDao;
 import com.codecool.shop.dao.implementation.OrderDaoMem;
 import com.codecool.shop.dao.implementation.UserDaoMem;
+import com.codecool.shop.logger;
+import com.codecool.shop.model.Order;
+import com.codecool.shop.model.OrderType;
 import com.codecool.shop.model.User;
 import com.codecool.shop.service.OrderService;
 import org.json.JSONException;
@@ -24,6 +27,9 @@ import java.util.HashMap;
 
 @WebServlet(urlPatterns = {"/confirmation"},name = "confirmation")
 public class ConfirmationController extends HttpServlet {
+    OrderDao orderDataStore = OrderDaoMem.getInstance();
+    OrderService orderService = new OrderService(orderDataStore);
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -55,11 +61,13 @@ public class ConfirmationController extends HttpServlet {
         userDao.add(user);
 
 
+
         resp.setStatus(200);
 
 
     }
-    private void saveJSONFile(HashMap<String, String> dict) {
+
+    private void saveJSONFile(HashMap<String, String> dict) throws IOException {
 
         System.out.println("HERE");
         JSONObject transaction = new JSONObject();
@@ -82,9 +90,17 @@ public class ConfirmationController extends HttpServlet {
         transaxion.add(transaction);
         System.out.println(transaxion);
 
-        for ( int i = 0;i< transaxion.size();i++){
-            System.out.println(transaxion.get(i));
-        }
+
+        Order order = new Order();
+        order.setOrderType(OrderType.CHECKED);
+        logger.saveAdminLog(order,transaxion);
+
+
+//
+//        Order order = new Order();
+//        order.setOrderType(OrderType.CHECKED);
+//        logger.saveAdminLog(order);
+
 
     }
     @Override
