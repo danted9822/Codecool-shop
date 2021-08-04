@@ -39,6 +39,7 @@ body {
 
 .payment-info {
     position: relative;
+    margin-bottom: 3%;
 }
 
 #credit {
@@ -114,4 +115,8 @@ table {
 
 input {
     margin-bottom: 3px;
+}
+
+#qty {
+    margin-top: 30%;
 }

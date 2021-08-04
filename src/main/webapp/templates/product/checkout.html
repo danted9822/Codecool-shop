@@ -115,7 +115,10 @@
           <tr class="item" >
             <td style="text-align: left" class="product-name" th:text="${prod.key.name}">Product name</td>
             <td><img class="smol" th:attr="src='/static/img/product_' + *{prod.key.id} + '.jpg'" alt=""/></td>
-            <td style="text-align: right" th:text="${prod.key.defaultPrice} + ' ' + ${prod.key.defaultCurrency}">Product price</td>
+            <td style="text-align: right">
+              <p th:text="${prod.key.defaultPrice} + ' ' + ${prod.key.defaultCurrency}">Product price</p>
+              <p id="qty" th:text="${prod.value} + ' Qty.'">Product Quantity</p>
+            </td>
           </tr>
         </table>
       </div>
@@ -124,41 +127,40 @@
 
     <div class="checkout">
       <div class="user">
-      <div class="user">
-        <form method="post" action="/confirmation">
-        <h2>Email</h2>
-        <input class="user-data" type="text" required placeholder="First name" id="first"><br>
-        <input class="user-data" type="text" required placeholder="Last name"  id="last"><br>
-        <input class="user-data" type="email" required placeholder="Email address" id="email"><br>
-        <input class="user-data" type="text" required placeholder="Phone number" minlength="9" maxlength="11" size="14" id="phone">
-        <input class="user-data" type="text" required placeholder="State" id="state">
-        <input class="user-data" type="text" required placeholder="City" id="city">
-        <input class="user-data" type="text" required placeholder="Address" id="address">
-        <input class="user-data" type="text" required placeholder="Post code" minlength="4" maxlength="4" size="6"  id="postcode"><br>
-        </form>
+        <div class="user">
+          <form method="post" action="/confirmation">
+          <h2>Email</h2>
+          <input class="user-data" type="text" required placeholder="First name" id="first"><br>
+          <input class="user-data" type="text" required placeholder="Last name"  id="last"><br>
+          <input class="user-data" type="email" required placeholder="Email address" id="email"><br>
+          <input class="user-data" type="text" required placeholder="Phone number" minlength="9" maxlength="11" size="14" id="phone">
+          <input class="user-data" type="text" required placeholder="State" id="state">
+          <input class="user-data" type="text" required placeholder="City" id="city">
+          <input class="user-data" type="text" required placeholder="Address" id="address">
+          <input class="user-data" type="text" required placeholder="Post code" minlength="4" maxlength="4" size="6"  id="postcode"><br>
+          </form>
+        </div>
+        <div class="payment-info">
+          <h2>Payment information</h2><br>
 
-      </div>
-      <div class="payment-info">
-        <h2>Payment information</h2><br>
+          <input type="radio" id="card" checked name="payment">
+          <label for="card">Credit or debit card</label>
+          <img id="credit" src="/static/img/creditcard.jpg" alt=""><br><br>
 
-        <input type="radio" id="card" checked name="payment">
-        <label for="card">Credit or debit card</label>
-        <img id="credit" src="/static/img/creditcard.jpg" alt=""><br><br>
+          <input type="radio" id="paypal" name="payment">
+          <label for="paypal">Paypal</label>
+          <img id="pal" src="/static/img/paypal.jpg" alt="">
+        </div>
 
-        <input type="radio" id="paypal" name="payment">
-        <label for="paypal">Paypal</label>
-        <img id="pal" src="/static/img/paypal.jpg" alt="">
-      </div>
-
-      <div class="submit">
-        <button id="paywith" class="btn btn-primary" data-toggle="modal" data-target="#modal">Pay with</button>
-        <button class="btn btn-outline-primary" id="back-to-cart" type="submit">Back to order</button>
-      </div>
+        <div class="submit">
+          <button id="paywith" class="btn btn-primary" data-toggle="modal" data-target="#modal">Pay with</button>
+          <button class="btn btn-outline-primary" id="back-to-cart" type="submit">Back to order</button>
+        </div>
     </div>
   </div>
 </div>
+</div>
 
 <div th:replace="footer.html :: copy"></div>
-</div>
 </body>
 </html>
