@@ -88,10 +88,11 @@ function collectUserData() {
         },
         body: JSON.stringify(customer)
     }).then(resp => {
-        console.log("siker")
+        console.log(customer)
         if (resp.status === 200) window.location = '/confirmation';
     });
 }
+
 // pay button on modal
 document.getElementById('pay-button').addEventListener('click', collectUserData);
 

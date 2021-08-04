@@ -2,6 +2,7 @@ package com.codecool.shop.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class User {
     private int id;
@@ -11,7 +12,12 @@ public class User {
     private String phoneNumber;
     private String billingAddress;
     private String shippingAddress;
-    private ArrayList orders = new ArrayList(5);
+    private List<Order> orders;
+
+    public User(){
+        this.orders = new ArrayList();
+        orders.add(new Order());
+    };
 
     public User(String firstName, String lastName, String email, String phoneNumber, String billingAddress, String shippingAddress) {
         this.firstName = firstName;
@@ -20,6 +26,7 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.billingAddress = billingAddress;
         this.shippingAddress = shippingAddress;
+        this.orders = new ArrayList<>();
         this.orders.add(new Order());
     }
 
@@ -68,7 +75,7 @@ public class User {
     }
 
     public void setBillingAddress(String country, String city, String zipcode, String address) {
-        this.billingAddress = AddressToString(country, city, zipcode, address);
+        this.billingAddress = addressToString(country, city, zipcode, address);
     }
 
     public String getShippingAddress() {
@@ -76,16 +83,16 @@ public class User {
     }
 
     public void setShippingAddress(String country, String city, String zipcode, String address) {
-        this.shippingAddress = AddressToString(country, city, zipcode, address);
+        this.shippingAddress = addressToString(country, city, zipcode, address);
     }
 
-    public String AddressToString
+    public String addressToString
             (String country, String city, String zipcode, String address) {
-        String stringAddress = country + ", " + city + ", "+ zipcode + ", " + address;
+        String stringAddress = country + "," + city + ","+ zipcode + "," + address;
         return stringAddress;
     }
 
-    public HashMap<String, String> AddressToDictionary
+    public HashMap<String, String> addressToDictionary
             (String country, String city, String zipcode, String address) {
         HashMap<String, String> DictionaryAddress = new HashMap<String, String>();
         DictionaryAddress.put("Country", country);
@@ -95,7 +102,20 @@ public class User {
         return DictionaryAddress;
     }
 
-//    public Order getCart() {
-//        return cart;
-//    }
+    public Order getOrder(Order order) {
+        return this.orders.stream().filter(t -> t.equals(order)).findFirst().orElse(null);
+    }
+
+    public List<Order> getAllOrders() {
+        return orders;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(id).append("\n").append(firstName).append("\n").append(lastName).append("\n").append(email)
+                .append("\n").append(phoneNumber).append("\n").append(billingAddress).append("\n").append(shippingAddress)
+                .append("\n").append(orders);
+        return sb.toString();
+    }
 }

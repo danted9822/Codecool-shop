@@ -7,6 +7,7 @@ import com.codecool.shop.dao.implementation.OrderDaoMem;
 import com.codecool.shop.dao.implementation.UserDaoMem;
 import com.codecool.shop.model.User;
 import com.codecool.shop.service.OrderService;
+import com.codecool.shop.service.UserService;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.simple.JSONArray;
@@ -29,6 +30,7 @@ public class ConfirmationController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         UserDao userDao = UserDaoMem.getInstance();
+        UserService userService = new UserService(userDao);
         StringBuilder jsonString = new StringBuilder();
         try {
             String line = "";
@@ -49,10 +51,11 @@ public class ConfirmationController extends HttpServlet {
         }
         String paymentSource = dict.containsKey("card") ? dict.get("card") : dict.get("username");
 
-
+        System.out.println("Ez a dict: " + dict);
         saveJSONFile(dict);
         User user = getUser(dict);
         userDao.add(user);
+        System.out.println("Ez a user: " + user.toString());
 
 
         resp.setStatus(200);
@@ -116,7 +119,7 @@ public class ConfirmationController extends HttpServlet {
 
 
     private User getUser(HashMap<String, String> dict) throws IOException {
-        return new User(dict.get("first_name"), dict.get("last_name"), dict.get("email"),dict.get("phoneNumber"),
+        return new User(dict.get("first_name"), dict.get("last_name"), dict.get("email_address"),dict.get("phone_number"),
                 dict.get("billingaddress"), dict.get("shippingAddress"));
     }
 

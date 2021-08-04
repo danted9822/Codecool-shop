@@ -12,7 +12,6 @@ import java.util.Map;
 public class OrderService {
 
     OrderDao orderDao;
-    ProductDao productDao;
 
     public OrderService(OrderDao orderDao) {
         this.orderDao = orderDao;
