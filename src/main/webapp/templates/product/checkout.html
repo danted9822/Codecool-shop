@@ -97,7 +97,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button class="btn btn-outline-primary" id="pay-button" type="submit">Pay</button>
+        <button id="pay-button" class="btn btn-outline-primary" type="button">Pay</button>
       </div>
     </div>
   </div>
@@ -124,16 +124,17 @@
 
     <div class="checkout">
       <div class="user">
-        <form method="post" action="/userinfo">
+      <div class="user">
+        <form method="post" action="/confirmation">
         <h2>Email</h2>
         <input class="user-data" type="text" required placeholder="First name" id="first"><br>
         <input class="user-data" type="text" required placeholder="Last name"  id="last"><br>
         <input class="user-data" type="email" required placeholder="Email address" id="email"><br>
+        <input class="user-data" type="text" required placeholder="Phone number" minlength="9" maxlength="11" size="14" id="phone">
         <input class="user-data" type="text" required placeholder="State" id="state">
         <input class="user-data" type="text" required placeholder="City" id="city">
         <input class="user-data" type="text" required placeholder="Address" id="address">
         <input class="user-data" type="text" required placeholder="Post code" minlength="4" maxlength="4" size="6"  id="postcode"><br>
-
         </form>
 
       </div>
@@ -158,5 +159,6 @@
 </div>
 
 <div th:replace="footer.html :: copy"></div>
+</div>
 </body>
 </html>

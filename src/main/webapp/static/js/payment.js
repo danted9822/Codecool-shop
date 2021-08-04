@@ -64,10 +64,12 @@ function collectUserData() {
     let customer = {};
     customer['first_name'] = document.getElementById('first').value;
     customer['last_name'] = document.getElementById('last').value;
-    customer['post_code'] = document.getElementById('postcode').value;
+    customer['email_address'] = document.getElementById('email').value;
+    customer['phone_number'] = document.getElementById('phone').value;
+    customer['state'] = document.getElementById('state').value;
     customer['city'] = document.getElementById('city').value;
     customer['address'] = document.getElementById('address').value;
-    customer['email'] = document.getElementById('email').value;
+    customer['post_code'] = document.getElementById('postcode').value;
     if (document.getElementById('card-number1').value) {
         customer['card'] = document.getElementById('card-number1').value;
         customer['card'] += document.getElementById('card-number2').value;
@@ -75,10 +77,11 @@ function collectUserData() {
     }
     if (document.getElementById('username').value) {
         customer['username'] = document.getElementById('username').value;
+        customer['password'] = document.getElementById('password').value;
     }
-
-    fetch('/userinfo', {
+    fetch('/confirmation', {
         method: 'POST',
+        credentials: 'same-origin',
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -97,4 +100,4 @@ document.getElementById('back-to-cart').addEventListener('click', function() {
     location.href = '/cart';
 });
 
-document.getElementById('pay').addEventListener('click', collectUserData);
+// document.getElementById('pay').addEventListener('click', collectUserData);

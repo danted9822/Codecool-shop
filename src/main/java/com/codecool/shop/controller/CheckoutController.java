@@ -3,8 +3,6 @@ package com.codecool.shop.controller;
 import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.dao.OrderDao;
 import com.codecool.shop.dao.implementation.OrderDaoMem;
-import com.codecool.shop.model.Payment;
-import com.codecool.shop.model.User;
 import com.codecool.shop.service.OrderService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -23,16 +21,21 @@ public class CheckoutController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         OrderDao cartDataStore = OrderDaoMem.getInstance();
         OrderService orderService = new OrderService(cartDataStore);
-
+        int cartCounter = 0;
         float totalPrice = 0;
+
+
+        if (orderService.getCartSize(1)==0) {
+            System.out.println("bazd meg ");
+            resp.sendRedirect("http://localhost:8888/");
+        }
+
+
         if (orderService.getAll().size() != 0) totalPrice = orderService.getCartPrice(1);
 
-        int cartCounter = 0;
         if (cartDataStore.getAll().size() != 0) cartCounter = orderService.getCartSize(1);
 
-        if (cartDataStore.getAll().size() == 0) {
-            resp.sendRedirect("http://localhost:8080/");
-        }
+
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());

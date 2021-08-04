@@ -1,19 +1,19 @@
 package com.codecool.shop.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class User {
     private int id;
     private String firstName;
     private String lastName;
     private String email;
-    private int phoneNumber;
+    private String phoneNumber;
     private String billingAddress;
     private String shippingAddress;
-    private List orders;
+    private ArrayList orders = new ArrayList(5);
 
-    User(String firstName, String lastName, String email, int phoneNumber, String billingAddress, String shippingAddress) {
+    public User(String firstName, String lastName, String email, String phoneNumber, String billingAddress, String shippingAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -55,11 +55,11 @@ public class User {
         this.email = email;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
