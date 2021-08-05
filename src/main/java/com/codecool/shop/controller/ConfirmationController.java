@@ -58,8 +58,10 @@ public class ConfirmationController extends HttpServlet {
         userDao.add(user);
         System.out.println("Ez a user: " + user.toString());
 
+        // sending email
         SendEmail sm = new SendEmail();
-        sm.sendMail(user.getEmail());
+        String email = "CodecoolShopDDLN test mail";
+        sm.sendMail(user.getEmail(), email);
 
         resp.setStatus(200);
 
