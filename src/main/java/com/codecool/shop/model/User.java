@@ -6,6 +6,8 @@ import java.util.List;
 
 public class User {
     private int id;
+    private String userName;
+    private String password;
     private String firstName;
     private String lastName;
     private String email;
@@ -17,10 +19,22 @@ public class User {
     public User(){
         this.orders = new ArrayList();
         orders.add(new Order());
-    };
-
+    }
 
     public User(String firstName, String lastName, String email, String phoneNumber, String billingAddress, String shippingAddress) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.billingAddress = billingAddress;
+        this.shippingAddress = shippingAddress;
+        this.orders = new ArrayList<>();
+        this.orders.add(new Order());
+    }
+
+    public User(String username, String password, String firstName, String lastName, String email, String phoneNumber, String billingAddress, String shippingAddress) {
+        this.userName = username;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -37,6 +51,22 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {

@@ -6,28 +6,15 @@ import java.util.Map;
 
 public class Order {
 
-    public enum OrderStatus {
-        CHECKED, PAID, CONFIRMED, SHIPPED;
-    }
-
     private int id;
     private String filename;
     private LocalDateTime date;
     private OrderStatus status;
-    private OrderType orderType;
 
     private Map<Product, Integer> cart;
 
-    public Order(OrderType orderType){
-        this.orderType = orderType;
-    }
-
-    public OrderType getOrderType() {
-        return orderType;
-    }
-
-    public void setOrderType(OrderType orderType) {
-        this.orderType = orderType;
+    public Order(OrderStatus orderType){
+        this.status = orderType;
     }
 
     public Order() {
