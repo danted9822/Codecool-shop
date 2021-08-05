@@ -7,13 +7,18 @@ import java.util.Properties;
 
 public class SendEmail {
 
-    public void sendMail() {
+    public void sendMail(String sendTo) {
         final String username = "username@gmail.com";
         final String password = "password";
 
         Properties properties = new Properties();
-//        properties.put("mail.smtp.host", "my-mail-server");
+//        properties.setProperty("mail.debug", "true");
+//        properties.put("mail.from", "myemail@gmail.com");
+//        properties.put("mail.smtp.starttls.enable", "true"); //TLS
+        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
 
         Session session = Session.getInstance(
                 properties,
@@ -26,14 +31,14 @@ public class SendEmail {
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress("from@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO, "to@gmail.com");
+            message.setRecipients(Message.RecipientType.TO, sendTo);
             message.setSubject("CodecoolShopDDLN test mail");
 //            message.setSentDate(new Date());
             message.setText("CodecoolShopDDLN test mail text");
             Transport.send(message);
             System.out.println("Done");
         } catch (MessagingException messagingException) {
-            System.out.println("send failed, exception: " + messagingException);
+            System.out.println("Send failed, exception: " + messagingException);
         }
 
 
