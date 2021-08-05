@@ -69,7 +69,7 @@ public class ConfirmationController extends HttpServlet {
 
     private void saveJSONFile(HashMap<String, String> dict) throws IOException {
 
-        System.out.println("HERE");
+        Order order = orderService.getOrder(1);
         JSONObject transaction = new JSONObject();
         try {
             transaction.put("First name", dict.get("first_name"));
@@ -82,7 +82,7 @@ public class ConfirmationController extends HttpServlet {
             transaction.put("Post code", dict.get("postcode"));
             transaction.put("Card number", dict.get("card"));
             transaction.put("Username", dict.get("username"));
-            transaction.put("Password",dict.get("password"));
+            transaction.put("Cart",order.getCart());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -91,7 +91,6 @@ public class ConfirmationController extends HttpServlet {
         System.out.println(transaxion);
 
 
-        Order order = new Order();
         order.setOrderType(OrderType.CHECKED);
         logger.saveAdminLog(order,transaxion);
 

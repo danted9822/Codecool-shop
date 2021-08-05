@@ -25,7 +25,7 @@ public class logger {
         if (order.getOrderType() == OrderType.CHECKED) {
             System.out.println(order);
 
-            String filename = "src/main/webapp/static/logger/" + order.getId() + "_" + dateFormat.format(new Date()) + ".txt";
+            String filename = "src/main/webapp/static/logger/" + order.getId() + "_" + dateFormat.format(new Date()) + ".json";
             System.out.println(filename);
             order.setFilename(filename);
             logger.info(String.format("Successfully checked out. Order id: %s", order.getId()));
