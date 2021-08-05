@@ -1,11 +1,11 @@
 package com.codecool.shop.controller;
 
+import com.codecool.shop.Logger;
 import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.dao.OrderDao;
 import com.codecool.shop.dao.UserDao;
 import com.codecool.shop.dao.implementation.OrderDaoMem;
 import com.codecool.shop.dao.implementation.UserDaoMem;
-import com.codecool.shop.logger;
 import com.codecool.shop.model.Order;
 import com.codecool.shop.model.OrderType;
 import com.codecool.shop.model.User;
@@ -63,11 +63,7 @@ public class ConfirmationController extends HttpServlet {
         userDao.add(user);
         System.out.println("Ez a user: " + user.toString());
 
-
-
         resp.setStatus(200);
-
-
     }
 
     private void saveJSONFile(HashMap<String, String> dict) throws IOException {
@@ -95,16 +91,9 @@ public class ConfirmationController extends HttpServlet {
 
 
         order.setOrderType(OrderType.CHECKED);
-        logger.saveAdminLog(order,transaxion);
-
-
-//
-//        Order order = new Order();
-//        order.setOrderType(OrderType.CHECKED);
-//        logger.saveAdminLog(order);
-
-
+        Logger.saveAdminLog(order,transaxion);
     }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         OrderDao cartDataStore = OrderDaoMem.getInstance();
