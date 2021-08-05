@@ -8,6 +8,7 @@ import com.codecool.shop.dao.implementation.OrderDaoMem;
 import com.codecool.shop.dao.implementation.UserDaoMem;
 import com.codecool.shop.model.Order;
 import com.codecool.shop.model.OrderType;
+import com.codecool.shop.email.SendEmail;
 import com.codecool.shop.model.User;
 import com.codecool.shop.service.OrderService;
 import com.codecool.shop.service.UserService;
@@ -62,6 +63,11 @@ public class ConfirmationController extends HttpServlet {
         User user = getUser(dict);
         userDao.add(user);
         System.out.println("Ez a user: " + user.toString());
+
+        // sending email
+        SendEmail sm = new SendEmail();
+        String email = "CodecoolShopDDLN test mail";
+        sm.sendMail(user.getEmail(), email);
 
         resp.setStatus(200);
     }
