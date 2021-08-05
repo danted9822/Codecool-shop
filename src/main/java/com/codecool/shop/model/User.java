@@ -19,6 +19,7 @@ public class User {
         orders.add(new Order());
     };
 
+
     public User(String firstName, String lastName, String email, String phoneNumber, String billingAddress, String shippingAddress) {
         this.firstName = firstName;
         this.lastName = lastName;

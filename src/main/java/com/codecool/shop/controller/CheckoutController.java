@@ -47,33 +47,10 @@ public class CheckoutController extends HttpServlet {
         }
 
         engine.process("product/checkout.html", context, resp.getWriter());
+
+
+
     }
-
-//    @Override
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        resp.setCharacterEncoding("UTF-8");
-//        TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
-//        WebContext context = new WebContext(req, resp, req.getServletContext());
-//
-//        System.out.println("ASD");
-//
-//        Payment payment;
-//        String paymentType = req.getParameter("payment-type");
-//        if (paymentType.equals("credit-card")){
-//            payment = new Payment(req.getParameter("cardnumber1"), req.getParameter("cardnumber2"),
-//                    req.getParameter("cardnumber3"),req.getParameter("holder"),req.getParameter("expiry"),
-//                    req.getParameter("year"),req.getParameter("code"));
-//            System.out.println(paymentType);
-//            System.out.println(payment);
-//        }else{
-//            payment = new Payment(req.getParameter("username"),
-//                    req.getParameter("password"));
-//            }
-//
-//        System.out.println("WWWW");
-//
-//        }
-
 
     }
 

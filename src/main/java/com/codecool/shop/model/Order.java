@@ -1,8 +1,8 @@
 package com.codecool.shop.model;
 
-import javax.management.AttributeNotFoundException;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Order {
 
@@ -11,10 +11,24 @@ public class Order {
     }
 
     private int id;
+    private String filename;
     private LocalDateTime date;
     private OrderStatus status;
+    private OrderType orderType;
+
     private Map<Product, Integer> cart;
 
+    public Order(OrderType orderType){
+        this.orderType = orderType;
+    }
+
+    public OrderType getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(OrderType orderType) {
+        this.orderType = orderType;
+    }
 
     public Order() {
         this.cart = new HashMap<>();
@@ -26,6 +40,14 @@ public class Order {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
     public LocalDateTime getDate() {
