@@ -4,7 +4,7 @@
 
 <style>
     input[type=text],[type=password],[type=email], select {
-        width: 100%;
+        width: 55%;
         padding: 12px 20px;
         margin: 8px 0;
         display: inline-block;
@@ -14,11 +14,12 @@
     }
 
     input[type=submit] {
-        width: 100%;
+        display:inline-block;
+        text-align: center;
+        width: 20%;
         background-color: #4CAF50;
         color: white;
         padding: 14px 20px;
-        margin: 8px 0;
         border: none;
         border-radius: 4px;
         cursor: pointer;
@@ -60,6 +61,9 @@
     <!-- Latest compiled and minified CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
     <!--  <link rel="preconnect" href="https://fonts.gstatic.com">-->
     <!--  <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">-->
@@ -77,7 +81,7 @@
         <h1>Codecool Shop</h1>
     </div>
 
-    <div class="container">
+<div class="container">
         <div class="user">
                 <form method="post" action="/registration">
                     <input class="user-data" type="text" required placeholder="Username" id="username" name="username"><br>
@@ -90,10 +94,17 @@
                     <input class="user-data" type="text" required placeholder="City" id="city" name="city">
                     <input class="user-data" type="text" required placeholder="Address" id="address" name="address">
                     <input class="user-data" type="text" required placeholder="Post code" minlength="4" maxlength="4" size="6"  id="postcode" name="postcode"><br>
-                    <input type="submit" value="Submit">
+
+                    <div style="display:flex; justify-content:center; width:100%; text-align:center;">
+                            <input type="submit" value="Submit">
+                            <span class="input-group-btn" style="width:20px;"></span>
+                            <input type="submit" value="Home" onclick="backtohome()">
+                    </div>
+
+
                 </form>
         </div>
-    </div>
+</div>
 
     <div th:replace="footer.html :: copy"></div>
 </body>
