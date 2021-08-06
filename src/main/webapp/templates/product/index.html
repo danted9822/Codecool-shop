@@ -53,13 +53,13 @@
             <div th:if="${session.name != null}" th:utext="${'Logged in as <strong>' + session.name + '</strong>,'}">Logged in</div>
             <div th:if="${session.name != null}"><a href="/logout">&nbsp;Logout</a></div>
             <div th:unless="${session.name != null}">
+                <button type="button" class="btn btn-primary me-3" onClick="registrationButton()">Registration</button>
                 <form class="d-flex" action="/login" method="post">
                     <input class="form-control me-2" name="name" type="text" placeholder="Username" aria-label="Username" required minlength="3" title="Must be 3 characters long" >
                     <input class="form-control me-2" name="password" type="password" placeholder="Password" aria-label="Password" required minlength="3" title="Must be 3 characters long" >
                     <button class="btn btn-outline-primary me" type="submit">Login</button>
                 </form>
             </div>
-            <button type="button" class="btn btn-primary me-3" onClick="registrationButton()">Registration</button>
         </div>
     </header>
 </div>
