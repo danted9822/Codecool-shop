@@ -68,7 +68,8 @@ public class ConfirmationController extends HttpServlet {
 
         // sending email
         SendEmail sm = new SendEmail();
-        String email = "CodecoolShopDDLN test mail";
+//        String email = "CodecoolShopDDLN test mail";
+        String email = sm.emailText(user, orderService.getOrder(1));
         sm.sendMail(user.getEmail(), email);
 
         resp.setStatus(200);
