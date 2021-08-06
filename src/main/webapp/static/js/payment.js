@@ -104,6 +104,9 @@ document.getElementById('back-to-cart').addEventListener('click', function() {
 function registrationButton() {
     location.href = '/registration';
 }
+function backtohome(){
+    location.href = '/';
+}
 
 
 // document.getElementById('pay').addEventListener('click', collectUserData);
