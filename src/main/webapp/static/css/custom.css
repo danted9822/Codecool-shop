@@ -166,3 +166,8 @@ input:disabled {
 {
     margin: 0 0 11px;
 }
+
+.form-control {
+    margin-right: 8px;
+
+}
