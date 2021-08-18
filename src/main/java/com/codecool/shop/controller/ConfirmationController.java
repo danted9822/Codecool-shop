@@ -87,6 +87,7 @@ public class ConfirmationController extends HttpServlet {
             transaction.put("Post code", dict.get("postcode"));
             transaction.put("Card number", dict.get("card"));
             transaction.put("Username", dict.get("username"));
+            transaction.put("Password",dict.get("password"));
             transaction.put("Cart",order.getCart());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -129,7 +130,7 @@ public class ConfirmationController extends HttpServlet {
 
 
     private User getUser(HashMap<String, String> dict) throws IOException {
-        return new User(dict.get("first_name"), dict.get("last_name"), dict.get("email_address"),dict.get("phone_number"),
+        return new User(dict.get("username"),dict.get("password"),dict.get("first_name"), dict.get("last_name"), dict.get("email_address"),dict.get("phone_number"),
                 dict.get("billingaddress"), dict.get("shippingAddress"));
     }
 

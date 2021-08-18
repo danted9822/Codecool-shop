@@ -77,6 +77,7 @@ function collectUserData() {
     }
     if (document.getElementById('username').value) {
         customer['username'] = document.getElementById('username').value;
+        customer['password'] = document.getElementById('password').value;
 
     }
     fetch('/confirmation', {

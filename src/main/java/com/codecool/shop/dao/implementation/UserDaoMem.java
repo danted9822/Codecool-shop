@@ -34,6 +34,11 @@ public class UserDaoMem implements UserDao {
     }
 
     @Override
+    public User find_by_name(String username) {
+        return null;
+    }
+
+    @Override
     public void remove(int id) {
         data.remove(find(id));
     }

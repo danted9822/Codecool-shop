@@ -5,13 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 
 public class User {
-    private int id;
+    private int id = 1;
+    private String email;
     private String firstName;
     private String lastName;
-    private String email;
     private String phoneNumber;
     private String billingAddress;
     private String shippingAddress;
+    private String username;
+    private String password;
     private List<Order> orders;
 
     public User(){
@@ -20,7 +22,9 @@ public class User {
     };
 
 
-    public User(String firstName, String lastName, String email, String phoneNumber, String billingAddress, String shippingAddress) {
+    public User(String username,String password, String email,String firstName, String lastName, String phoneNumber, String billingAddress, String shippingAddress) {
+        this.username=username;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -30,6 +34,8 @@ public class User {
         this.orders = new ArrayList<>();
         this.orders.add(new Order());
     }
+
+
 
     public int getId() {
         return id;
@@ -87,6 +93,22 @@ public class User {
         this.shippingAddress = addressToString(country, city, zipcode, address);
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String addressToString
             (String country, String city, String zipcode, String address) {
         String stringAddress = country + "," + city + ","+ zipcode + "," + address;
@@ -114,7 +136,7 @@ public class User {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(id).append("\n").append(firstName).append("\n").append(lastName).append("\n").append(email)
+        sb.append(id).append("\n").append(username).append("\n").append(password).append("\n").append(firstName).append("\n").append(lastName).append("\n").append(email)
                 .append("\n").append(phoneNumber).append("\n").append(billingAddress).append("\n").append(shippingAddress)
                 .append("\n").append(orders);
         return sb.toString();

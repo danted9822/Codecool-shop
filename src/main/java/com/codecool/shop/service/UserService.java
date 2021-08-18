@@ -28,8 +28,8 @@ public class UserService {
         userDao.add(new User());
     }
 
-    public void addUser(String firstName, String lastName, String email, String phoneNumber, String billingAddress, String shippingAddress) {
-        userDao.add(new User(firstName, lastName, email, phoneNumber, billingAddress, shippingAddress));
+    public void addUser(String username, String password,String firstName, String lastName, String email, String phoneNumber, String billingAddress, String shippingAddress) {
+        userDao.add(new User(username, password, firstName, lastName, email, phoneNumber, billingAddress, shippingAddress));
     }
 
     public String getFirstName(int id) {
