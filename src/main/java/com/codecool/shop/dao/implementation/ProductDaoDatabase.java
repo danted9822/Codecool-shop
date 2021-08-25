@@ -1,5 +1,9 @@
 package com.codecool.shop.dao.implementation;
 
+<<<<<<< HEAD
+=======
+import com.codecool.shop.controller.Database.DatabaseManager;
+>>>>>>> dc55b42edc1181a812601a1665336040897a2a28
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
