@@ -1,11 +1,10 @@
 package com.codecool.shop.controller.Database;
 
-<<<<<<< HEAD
 import org.postgresql.ds.PGSimpleDataSource;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
-=======
+
 import com.codecool.shop.dao.implementation.*;
 import org.postgresql.ds.PGSimpleDataSource;
 import org.slf4j.Logger;
@@ -17,7 +16,7 @@ import java.io.IOException;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.Properties;
->>>>>>> dc55b42edc1181a812601a1665336040897a2a28
+
 
 public class DatabaseManager {
 

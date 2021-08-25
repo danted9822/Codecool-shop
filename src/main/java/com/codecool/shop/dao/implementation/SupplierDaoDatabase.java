@@ -1,14 +1,14 @@
 package com.codecool.shop.dao.implementation;
 
 import com.codecool.shop.controller.Database.DatabaseManager;
-<<<<<<< HEAD
+
 import com.codecool.shop.dao.SupplierDao;
-=======
+
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
->>>>>>> dc55b42edc1181a812601a1665336040897a2a28
+
 import com.codecool.shop.model.Supplier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

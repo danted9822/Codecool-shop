@@ -30,11 +30,7 @@ public class LoginController extends HttpServlet {
 
                 HttpSession session = req.getSession();
                 session.setAttribute("name", username);
-<<<<<<< HEAD
             }
-=======
-                }
->>>>>>> dc55b42edc1181a812601a1665336040897a2a28
         }
 
         resp.sendRedirect(req.getHeader("referer"));
