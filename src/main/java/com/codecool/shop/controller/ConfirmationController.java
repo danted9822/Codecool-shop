@@ -130,7 +130,7 @@ public class ConfirmationController extends HttpServlet {
 
 
     private User getUser(HashMap<String, String> dict) throws IOException {
-        return new User(dict.get("username"),dict.get("password"),dict.get("first_name"), dict.get("last_name"), dict.get("email_address"),dict.get("phone_number"),
+        return new User(dict.get("username"),dict.get("password"),dict.get("email_address"),dict.get("first_name"), dict.get("last_name"), dict.get("phone_number"),
                 dict.get("billingaddress"), dict.get("shippingAddress"));
     }
 

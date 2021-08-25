@@ -1,7 +1,7 @@
 package com.codecool.shop;
 
 import com.codecool.shop.model.Order;
-import com.codecool.shop.model.OrderStatus;
+import com.codecool.shop.model.OrderType;
 import org.json.simple.JSONArray;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +20,7 @@ public class Logger {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
         LocalDateTime now = LocalDateTime.now();
 
-        if (order.getStatus() == Order.OrderStatus.CHECKED) {
+        if (order.getOrderType() == OrderType.CHECKED) {
             System.out.println(order);
 
             String filename = "src/main/webapp/static/Logger/" + order.getId() + "_" + dateFormat.format(new Date()) + ".json";
