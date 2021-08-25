@@ -28,32 +28,8 @@ public class UserService {
         userDao.add(new User());
     }
 
-    public void addUser(String firstName, String lastName, String email, String phoneNumber, String billingAddress, String shippingAddress) {
-        userDao.add(new User(firstName, lastName, email, phoneNumber, billingAddress, shippingAddress));
-    }
-
-    public void addUser(String username, String password, String firstName, String lastName, String email, String phoneNumber, String billingAddress, String shippingAddress) {
+    public void addUser(String username, String password,String firstName, String lastName, String email, String phoneNumber, String billingAddress, String shippingAddress) {
         userDao.add(new User(username, password, firstName, lastName, email, phoneNumber, billingAddress, shippingAddress));
-    }
-
-    public String getUserName(int id) {
-        User user = userDao.find(id);
-        return user.getUserName();
-    }
-
-    public void setUserName(int id, String userName) {
-        User user = userDao.find(id);
-        user.setUserName(userName);
-    }
-
-    public String getPassword(int id) {
-        User user = userDao.find(id);
-        return user.getPassword();
-    }
-
-    public void setPassword(int id, String password) {
-        User user = userDao.find(id);
-        user.setPassword(password);
     }
 
     public String getFirstName(int id) {

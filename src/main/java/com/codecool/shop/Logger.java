@@ -20,7 +20,7 @@ public class Logger {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
         LocalDateTime now = LocalDateTime.now();
 
-        if (order.getStatus() == OrderStatus.CHECKED) {
+        if (order.getStatus() == Order.OrderStatus.CHECKED) {
             System.out.println(order);
 
             String filename = "src/main/webapp/static/Logger/" + order.getId() + "_" + dateFormat.format(new Date()) + ".json";

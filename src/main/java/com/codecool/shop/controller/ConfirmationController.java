@@ -7,7 +7,7 @@ import com.codecool.shop.dao.UserDao;
 import com.codecool.shop.dao.implementation.OrderDaoMem;
 import com.codecool.shop.dao.implementation.UserDaoMem;
 import com.codecool.shop.model.Order;
-import com.codecool.shop.model.OrderStatus;
+import com.codecool.shop.model.OrderType;
 import com.codecool.shop.email.SendEmail;
 import com.codecool.shop.model.User;
 import com.codecool.shop.service.OrderService;
@@ -23,7 +23,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
@@ -36,7 +35,6 @@ public class ConfirmationController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
 
         UserDao userDao = UserDaoMem.getInstance();
         UserService userService = new UserService(userDao);
@@ -68,8 +66,8 @@ public class ConfirmationController extends HttpServlet {
 
         // sending email
         SendEmail sm = new SendEmail();
-//        String email = "CodecoolShopDDLN test mail";
         String email = sm.emailText(user, orderService.getOrder(1));
+        System.out.println(user.getEmail()+ "LEGYÉL JÓ TE PÖCS");
         sm.sendMail(user.getEmail(), email);
 
         resp.setStatus(200);
@@ -90,6 +88,7 @@ public class ConfirmationController extends HttpServlet {
             transaction.put("Post code", dict.get("postcode"));
             transaction.put("Card number", dict.get("card"));
             transaction.put("Username", dict.get("username"));
+            transaction.put("Password",dict.get("password"));
             transaction.put("Cart",order.getCart());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -99,14 +98,12 @@ public class ConfirmationController extends HttpServlet {
         System.out.println(transaxion);
 
 
-        order.setStatus(OrderStatus.CHECKED);
+        order.setOrderType(OrderType.CHECKED);
         Logger.saveAdminLog(order,transaxion);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-
         OrderDao cartDataStore = OrderDaoMem.getInstance();
         OrderService orderService = new OrderService(cartDataStore);
 
@@ -134,7 +131,7 @@ public class ConfirmationController extends HttpServlet {
 
 
     private User getUser(HashMap<String, String> dict) throws IOException {
-        return new User(dict.get("first_name"), dict.get("last_name"), dict.get("email_address"),dict.get("phone_number"),
+        return new User(dict.get("username"),dict.get("password"),dict.get("email_address"),dict.get("first_name"), dict.get("last_name"),dict.get("phone_number"),
                 dict.get("billingaddress"), dict.get("shippingAddress"));
     }
 
